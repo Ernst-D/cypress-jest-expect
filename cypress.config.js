@@ -10,10 +10,11 @@ module.exports = defineConfig({
     setupNodeEvents(on, config) {
       // implement node event listeners here
       on("task",{
-          _expect({actual, expected}){
+          _expect({matcher ,actual, expected}){
             console.debug(`actual: ${actual}`)
             console.debug(`expected: ${expected}`)
-            expect(actual).toEqual(expected)
+            
+            expect(actual)[`${matcher}`](expected)
 
             return null;
           }
