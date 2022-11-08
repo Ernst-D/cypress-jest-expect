@@ -1,5 +1,5 @@
 const { defineConfig } = require("cypress");
-const { expect } = require("expect")
+const { _expect } = require("./src");
 
 module.exports = defineConfig({
   e2e: {
@@ -11,12 +11,8 @@ module.exports = defineConfig({
       // implement node event listeners here
       on("task",{
           _expect({matcher ,actual, expected}){
-            console.debug(`actual: ${actual}`)
-            console.debug(`expected: ${expected}`)
-            
-            expect(actual)[`${matcher}`](expected)
-
-            return null;
+            // _expect({matcher: matcher, actual: actual, expected: expected})
+            return _expect({matcher: matcher, actual: actual, expected: expected});
           }
       })
     },
